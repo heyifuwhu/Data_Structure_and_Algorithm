@@ -1,3 +1,5 @@
+from Abstract_Data_Structure.empty import Empty
+
 class PriorityQueueBase(object):
     """
     Abstract base class for priority queue
