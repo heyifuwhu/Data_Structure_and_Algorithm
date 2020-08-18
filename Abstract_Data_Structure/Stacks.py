@@ -1,3 +1,5 @@
+from Abstract_Data_Structure.empty import Empty
+
 class ArrayStack(object):
     """
     LIFO Stack implementation using a Python list as underlying storage.
