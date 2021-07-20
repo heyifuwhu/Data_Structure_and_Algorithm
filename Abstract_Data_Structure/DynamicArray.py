@@ -1,5 +1,6 @@
 import ctypes
 
+
 class DynamicArray(object):
     """A dynamic array class akin to a simplified Python list"""
 
@@ -35,14 +36,6 @@ class DynamicArray(object):
     def extend(self, arr):
         pass
 
-    def _resize(self, c):
-        """Resize internal array to capacity c"""
-        B = self._make_array(c)
-        for k in range(self._n):
-            B[k] = self._A[k]
-        self._A = B
-        self._capacity = c
-
     def remove(self, value):
         """Remove first occurrence of value()or raise ValueError"""
         # note: we don't consider shrinking the dynamic array in this version
@@ -54,6 +47,14 @@ class DynamicArray(object):
                 self._n -= 1
                 return
         raise ValueError('value not found')
+
+    def _resize(self, c):
+        """Resize internal array to capacity c"""
+        B = self._make_array(c)
+        for k in range(self._n):
+            B[k] = self._A[k]
+        self._A = B
+        self._capacity = c
 
     def _make_array(self, c):
         """low-level array"""
@@ -79,11 +80,23 @@ class DynamicArray(object):
             raise IndexError("invalid index")
         self._A[k] = v
 
+
 if __name__ == "__main__":
     arr = DynamicArray()
     for i in range(5):
         arr.append(i)
+    arr.show()
     arr[0] = 10
+    arr.show()
+    arr.remove(10)
+    arr.show()
+    try:
+        arr.remove(10)
+    except Exception as e:
+        print(e)
+
+    arr.insert(0, 15)
+    arr.show()
 
     # Python List Class
     # from time import time
@@ -98,5 +111,3 @@ if __name__ == "__main__":
     # for i in range(2, 9):
     #     num = 10**i
     #     print(num, compute_average(num))
-
-    arr.show()
