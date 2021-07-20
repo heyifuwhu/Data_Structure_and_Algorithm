@@ -1,0 +1,11 @@
+# Yifu Jason He
+.idea
+.ipynb_checkpoints
+
+# macOS Files
+.DS_Store
+
+# pycache
+__pycache__/
+*.pyc
+
