@@ -1,4 +1,4 @@
-from Abstract_Data_Structure.empty import Empty
+from AbstractDataStructure.empty import Empty
 
 class ArrayQueue(object):
     """
