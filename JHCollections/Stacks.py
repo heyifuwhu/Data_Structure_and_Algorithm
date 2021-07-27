@@ -26,3 +26,8 @@ class ArrayStack(object):
         if self.is_empty():
             raise Empty("Stack is empty")
         return self._data.pop()
+
+
+if __name__ == '__main__':
+    stack = ArrayStack()
+    stack.top()

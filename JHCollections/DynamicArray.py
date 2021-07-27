@@ -7,28 +7,28 @@ class DynamicArray(object):
     def __init__(self):
         """Create an empty array"""
         self._capacity = 1
-        self._n = 0
+        self._size = 0
         self._A = self._make_array(self._capacity)
 
     def show(self):
-        print(self._A[:self._n])
+        print(self._A[:self._size])
 
     def append(self, obj):
         """Add element to end of the array"""
-        if self._n == self._capacity:
+        if self._size == self._capacity:
             self._resize(2 * self._capacity)
-        self._A[self._n] = obj
-        self._n += 1
+        self._A[self._size] = obj
+        self._size += 1
 
     def insert(self, k, v):
         """Insert value at index k, shifting subsequent values rightward"""
         # assume 0 <= k <= n
-        if self._n == self._capacity:
+        if self._size == self._capacity:
             self._resize(2*self._capacity)
-        for i in range(self._n, k, -1):
+        for i in range(self._size, k, -1):
             self._A[i] = self._A[i-1]
         self._A[k] = v
-        self._n += 1
+        self._size += 1
 
     def pop(self, k):
         pass
@@ -39,19 +39,19 @@ class DynamicArray(object):
     def remove(self, value):
         """Remove first occurrence of value()or raise ValueError"""
         # note: we don't consider shrinking the dynamic array in this version
-        for k in range(self._n):
+        for k in range(self._size):
             if self._A[k] == value:
-                for j in range(k, self._n - 1):
+                for j in range(k, self._size - 1):
                     self._A[j] = self._A[j+1]
-                self._A[self._n-1] = None
-                self._n -= 1
+                self._A[self._size - 1] = None
+                self._size -= 1
                 return
         raise ValueError('value not found')
 
     def _resize(self, c):
         """Resize internal array to capacity c"""
         B = self._make_array(c)
-        for k in range(self._n):
+        for k in range(self._size):
             B[k] = self._A[k]
         self._A = B
         self._capacity = c
@@ -62,7 +62,7 @@ class DynamicArray(object):
 
     def __len__(self):
         """Return number of elements stored in the array"""
-        return self._n
+        return self._size
     #
     # def __str__(self):
     #     print(self._A[:self._n])
@@ -70,13 +70,13 @@ class DynamicArray(object):
 
     def __getitem__(self, k):
         """Return the element at index k"""
-        if not 0 <= k < self._n:
+        if not 0 <= k < self._size:
             raise IndexError("invalid index")
         return self._A[k]
 
     def __setitem__(self, k, v):
         """Assign v to the element at index k"""
-        if not 0 <= k < self._n:
+        if not 0 <= k < self._size:
             raise IndexError("invalid index")
         self._A[k] = v
 

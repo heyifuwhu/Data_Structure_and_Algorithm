@@ -32,7 +32,7 @@ class LinkedList(object):
             self.tail.prev, cursor.next = cursor, self.tail
             # self.show()
 
-    def _isEmpty(self):
+    def _is_empty(self):
         if self.size == 0:
             return True
         else:
@@ -47,7 +47,7 @@ class LinkedList(object):
         # self.show()
 
     def pop(self):
-        if not self._isEmpty():
+        if not self._is_empty():
             self.size -= 1
             # remove the value at tail
             value = self.hashmap[self.size].val
