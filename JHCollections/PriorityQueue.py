@@ -1,4 +1,4 @@
-from AbstractDataStructure.empty import Empty
+from JHCollections.empty import Empty
 
 class PriorityQueueBase(object):
     """
